@@ -1,0 +1,13 @@
+
+ 	java:S135R"YReduce the total number of break and continue statements in this loop to use at most one.(˜ïˆÿÿÿÿÿ8½´‘í1J$9632345a-8003-4e56-aadc-5dbbf754156a
+V
+java:S1220""Move this file to a named package.J$ce28c4e7-bee9-4ca8-b25a-0ddb775e6a8d
+r	java:S106"+Replace this use of System.out by a logger.(ƒÇãˆúÿÿÿÿ8ÃÀ´‘í1J$b219b3b2-6aeb-4d14-bfe3-0c0d9315fbe6
+r	java:S106"+Replace this use of System.out by a logger.(øó¾„üÿÿÿÿ8ÃÀ´‘í1J$695002cf-8f5f-4915-8aab-3eb9a80d858a
+m	java:S106"+Replace this use of System.out by a logger.(‚ÎšÛ8ÃÀ´‘í1J$9e95271b-9315-4720-8c57-5d24b31f3c46
+r	java:S106 "+Replace this use of System.out by a logger.(ƒÇãˆúÿÿÿÿ8ÃÀ´‘í1J$7a8a0753-9e83-4213-b27e-df64fe689a7b
+m	java:S106*"+Replace this use of System.out by a logger.(©îŠé8ÌÀ´‘í1J$141e3f38-fc91-414d-83a0-d23dcaf38607
+m	java:S106-"+Replace this use of System.out by a logger.(àïôÊ8ÌÀ´‘í1J$24325f14-17ed-4c5d-9c3e-fea5da0fdcc9
+m	java:S106O"+Replace this use of System.out by a logger.(„ı³8ÌÀ´‘í1J$5cf7fc5f-4f05-41b8-b5b4-f516f00e5b39
+m	java:S106W"+Replace this use of System.out by a logger.(«¤†°8ÓÀ´‘í1J$87d778dc-890b-48fb-a1fe-8584a28b64d6
+r	java:S106Z"+Replace this use of System.out by a logger.(Ç†´¼øÿÿÿÿ8ÓÀ´‘í1J$943f4277-7fe3-4781-9473-d7cf04d5a59f
