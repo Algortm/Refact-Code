@@ -71,6 +71,16 @@ public class TicTacToe {
                 (board[2] == player && board[4] == player && board[6] == player);
     }
 
+    private void printWinMessage(char winner) {
+        if (winner == PLAYER_X) {
+            logger.info("Player X wins!");
+            logger.info("Player O loses.");
+        } else {
+            logger.info("Player O wins!");
+            logger.info("Player X loses.");
+        }
+    }
+
     private boolean isBoardFull() {
         for (char cell : board) {
             if (cell == EMPTY_CELL) {
@@ -89,7 +99,7 @@ public class TicTacToe {
             playerMove(currentPlayer);
             printBoard();
             if (checkWin(currentPlayer)) {
-                logger.info("Player {} wins!", currentPlayer);
+                printWinMessage(currentPlayer);
                 return;
             } else if (isBoardFull()) {
                 logger.info("It's a draw!");
@@ -97,10 +107,5 @@ public class TicTacToe {
             }
             xTurn = !xTurn;
         }
-    }
-
-    public static void main(String[] args) {
-        TicTacToe game = new TicTacToe();
-        game.playGame();
     }
 }
