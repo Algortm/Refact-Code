@@ -1,15 +1,15 @@
 import java.util.Scanner;
 
-public class App {
+public class TicTacToe {
 
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         byte input;
         byte rand;
         byte i;
         boolean boxAvailable = false;
         byte winner = 0;
-        char box[] = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+        char[] box = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
         System.out.println("Enter box number to select. Enjoy!\n");
 
         boolean boxEmpty = false;
@@ -26,7 +26,7 @@ public class App {
             }
 
             if(winner == 1){
-                System.out.println("You won the game!\nCreated by Shreyas Saha. Thanks for playing!");
+                System.out.println("Congratulations! You won the game!\nCreated by Shreyas Saha. Thanks for playing!");
                 break;
             } else if(winner == 2){
                 System.out.println("You lost the game!\nCreated by Shreyas Saha. Thanks for playing!");
@@ -37,7 +37,7 @@ public class App {
             }
 
             while (true) {
-                input = scan.nextByte();
+                input = scanner.nextByte();
                 if (input > 0 && input < 10) {
                     if (box[input - 1] == 'X' || box[input - 1] == 'O')
                         System.out.println("That one is already in use. Enter another.");
@@ -65,7 +65,7 @@ public class App {
                 }
             }
 
-            if(boxAvailable == false){
+            if(!boxAvailable) {
                 winner = 3;
                 continue;
             }
