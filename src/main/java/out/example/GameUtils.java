@@ -1,38 +1,35 @@
 package out.example;
 
-import java.util.Scanner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import java.util.Scanner;
 
 public class GameUtils {
-    private static final int MAX_NUMBER = 9;
-    private static final char PLAYER_X = 'X';
-    private static final char PLAYER_O = '0';
-    private static final Logger logger = LogManager.getLogger(GameUtils.class);
+     private static final Logger logger = LogManager.getLogger(GameUtils.class);
 
     private void doSomething(String string) {
         logger.info(string);
     }
 
-    private void start() {
+    public void start() {
         doSomething("Enter box number to select. Enjoy!");
     }
 
-    private void nullBox(char[] box) {
-        for (int i = 0; i < MAX_NUMBER; i++)
+    public void nullBox(char[] box, byte maxField) {
+        for (int i = 0; i < maxField; i++)
             box[i] = ' ';
     }
 
-    private void inputBox(char[] box) {
+    public void inputBox(char[] box, byte maxField) {
         Scanner scan = new Scanner(System.in);
         byte input;
         while (true) {
             input = scan.nextByte();
-            if (input > 0 && input <= MAX_NUMBER) {
-                if (box[input - 1] == PLAYER_X || box[input - 1] == PLAYER_O)
+            if (input > 0 && input <= maxField) {
+                if (box[input - 1] == 'X' || box[input - 1] == 'O')
                     doSomething("That one is already in use. Enter another.");
                 else {
-                    box[input - 1] = PLAYER_X;
+                    box[input - 1] = 'X';
                     break;
                 }
             } else
@@ -40,18 +37,18 @@ public class GameUtils {
         }
     }
 
-    private void rundomBox(char[] box) {
+    public void rundomBox(char[] box, byte maxField) {
         byte rand;
         while (true) {
-            rand = (byte) (Math.random() * (MAX_NUMBER - 1 + 1) + 1);
-            if (box[rand - 1] != PLAYER_X && box[rand - 1] != PLAYER_O) {
-                box[rand - 1] = PLAYER_O;
+            rand = (byte) (Math.random() * (maxField - 1 + 1) + 1);
+            if (box[rand - 1] != 'X' && box[rand - 1] != 'O') {
+                box[rand - 1] = 'O';
                 break;
             }
         }
     }
 
-    private void drawBox(char[] box) {
+    public void drawBox(char[] box) {
         doSomething("\n " + box[0] + " | " + box[1] + " | " + box[2] + " ");
         doSomething("-----------");
         doSomething(" " + box[3] + " | " + box[4] + " | " + box[5] + " ");
@@ -67,7 +64,7 @@ public class GameUtils {
         return booleanAnd;
     }
 
-    private boolean orBox(char[] box, char player) {
+    public boolean orBox(char[] box, char player) {
         boolean booleanOr = false;
         if (andBox(box[0], box[1], box[2], player) ||
                 andBox(box[0], box[3], box[6], player) ||
@@ -83,7 +80,7 @@ public class GameUtils {
         return booleanOr;
     }
 
-    private void finish(byte winner) {
+    public void finish(byte winner) {
         if (winner == 1) {
             doSomething("You won the game!\nCreated by Shreyas Saha. Thanks for playing!");
 
@@ -92,44 +89,6 @@ public class GameUtils {
 
         } else if (winner == 3) {
             doSomething("It's a draw!\nCreated by Shreyas Saha. Thanks for playing!");
-
-        }
-    }
-
-    public void logicGame() {
-        int numberMoves = 0;
-        byte winner = 0;
-        char[] box = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
-
-        start();
-
-        drawBox(box);
-        nullBox(box);
-
-        while (winner == 0) {
-
-            inputBox(box);
-            numberMoves++;
-
-            if (orBox(box, PLAYER_X)) {
-                winner = 1;
-            }
-
-            if (numberMoves != 5) {
-                rundomBox(box);
-
-                if (orBox(box, PLAYER_O)) {
-                    winner = 2;
-                }
-            }
-
-            drawBox(box);
-
-            if (numberMoves == 5 && winner == 0) {
-                winner = 3;
-            }
-
-            finish(winner);
 
         }
     }
