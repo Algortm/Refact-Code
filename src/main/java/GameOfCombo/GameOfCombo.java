@@ -73,6 +73,7 @@ public class GameOfCombo {
         }
     }
 
+
     private void showResults(String message) {
         logger.log(Level.INFO, String.format("%s%nCreated by Korysh. Thanks for playing!", message));
     }
