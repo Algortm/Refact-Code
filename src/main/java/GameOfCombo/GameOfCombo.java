@@ -1,4 +1,4 @@
-package Game_of_Combo;
+package GameOfCombo;
 
 import java.io.FileInputStream;
 import java.util.Scanner;
@@ -7,7 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
-public class Game_of_Combo {
+public class GameOfCombo {
 
     private static Logger logger;
     private final Random random = new Random();
@@ -15,7 +15,7 @@ public class Game_of_Combo {
     static {
         try (FileInputStream ins = new FileInputStream("src/main/java/config/log.config")) {
             LogManager.getLogManager().readConfiguration(ins);
-            logger = Logger.getLogger(Game_of_Combo.class.getName());
+            logger = Logger.getLogger(GameOfCombo.class.getName());
         } catch (Exception ignore) {
             ignore.printStackTrace();
         }

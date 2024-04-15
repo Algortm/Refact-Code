@@ -2,42 +2,42 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                              http://maven.apache.org/maven-v4_0_0.xsd">
-    <!-- Версія моделі POM -->
+
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- Група проекту -->
+
     <groupId>com.example</groupId>
 
-    <!-- Ідентифікатор артефакту (назва проекту) -->
+
     <artifactId>App</artifactId>
 
-    <!-- Тип упакування проекту (jar) -->
+
     <packaging>jar</packaging>
 
-    <!-- Версія проекту -->
+
     <version>1.0-SNAPSHOT</version>
 
-    <!-- Назва проекту -->
+
     <name>App</name>
 
-    <!-- Властивості проекту, включаючи версію компілятора та кодування -->
+
     <properties>
-        <maven.compiler.source>17</maven.compiler.source> <!-- Версія компілятора -->
-        <maven.compiler.target>17</maven.compiler.target> <!-- Версія байт-коду, що генерується компілятором -->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> <!-- Кодування файлів проекту -->
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <!-- Залежності проекту -->
+
     <dependencies>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.32</version> <!-- Оновіть версію, якщо потрібно -->
+            <version>1.7.32</version>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.2.6</version> <!-- Оновіть версію за потреби -->
+            <version>1.2.6</version>
         </dependency>
     </dependencies>
 </project>

@@ -1,8 +1,9 @@
-package Game_of_Combo;
+package GameOfCombo;
+
 public class Main {
 
     public static void main(String[] args) {
-        Game_of_Combo game = new Game_of_Combo();
+        GameOfCombo game = new GameOfCombo();
         game.startGame();
     }
 }

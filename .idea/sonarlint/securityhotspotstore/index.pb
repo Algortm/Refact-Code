@@ -11,3 +11,7 @@ G.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec,8\6\86
 Q.idea/sonarlint/securityhotspotstore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec,2\c\2cabb939da04d3de3a200bf2b575690e1a16316d
 Å
 Q.idea/sonarlint/securityhotspotstore/6/7/67512e2f04487cca15d6699055f74a51de1a9eb4,6\d\6d745d781a776adac3fa77c8278111a3dff5a966
+Z
+*src/main/java/GameOfCombo/GameOfCombo.java,6\8\68876b3e6b03cc49dbf8ae2785ef485ebdd175de
+S
+#src/main/java/GameOfCombo/Main.java,c\d\cddeb9e2d4344cb4e5fd04d0da19bef77cf41fe7
