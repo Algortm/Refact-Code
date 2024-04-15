@@ -1,23 +1,23 @@
 
- 	java:S135"YReduce the total number of break and continue statements in this loop to use at most one.(˜ïˆÿÿÿÿÿ8ÕÍÒ“î1J$4f84911a-d0e7-4da2-8325-4be627ba6373
+ 	java:S135"YReduce the total number of break and continue statements in this loop to use at most one.(˜ïˆÿÿÿÿÿ8ÕÍÒ“î1J$970490b1-91ef-4489-a530-824affb8b777
 •
-java:S3776"RRefactor this method to reduce its Cognitive Complexity from 71 to the 15 allowed.(Çµí‘8¾ÏÒ“î1J$eed4e10e-2ec0-435d-8513-e1f0a3d40baf
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 71 to the 15 allowed.(Çµí‘8¾ÏÒ“î1J$96c0d1e9-f9ad-44d4-a6e8-a016924a2fed
 ^
-java:S3626U"Remove this redundant jump.(ÉŠ©ƒ8¤Ê²•î1J$1fec70de-5637-4169-a8d7-f9d63c71ab87
+java:S3626U"Remove this redundant jump.(ÉŠ©ƒ8¤Ê²•î1J$73553ca2-564c-42f8-8d93-5b5acfef6708
 m
-java:S1197"*Move the array designators [] to the type.(©íôŒ8ÙÏÒ“î1J$090a2b4c-77d7-4880-ae94-41e12bde4b8d
-m	java:S106"+Replace this use of System.out by a logger.(Ä™¶Æ8ÚÏÒ“î1J$eb8c85a0-8ee5-424f-b889-7c9c15974a4b
-m	java:S106"+Replace this use of System.out by a logger.(½šÆÛ8ÛÏÒ“î1J$7fad0fc7-a632-4b90-9193-3db3ec8da424
-m	java:S106"+Replace this use of System.out by a logger.(‚ÎšÛ8ÜÏÒ“î1J$6da01010-a58f-42e4-853c-282594bfb0a3
-l	java:S106"+Replace this use of System.out by a logger.(š²ıc8ÜÏÒ“î1J$517cefd5-cd21-4b29-b665-2950a05b987b
-m	java:S106"+Replace this use of System.out by a logger.(‚ÎšÛ8ÜÏÒ“î1J$671bf2cb-8a3d-405c-bcaa-faf2d64c3bce
-m	java:S106"+Replace this use of System.out by a logger.(èå”8İÏÒ“î1J$891a7a1f-eafc-41d8-8428-519d418ac814
-m	java:S106"+Replace this use of System.out by a logger.(¯Óêï8İÏÒ“î1J$b37accce-6a8a-4fe4-a915-a2afbde5e9e7
-m	java:S106 "+Replace this use of System.out by a logger.(‰¨ËÓ8ŞÏÒ“î1J$792aaec2-9359-4af9-b4e5-4b1ae2f5eb9e
-r	java:S106#"+Replace this use of System.out by a logger.(äßŸµşÿÿÿÿ8ŞÏÒ“î1J$172b026a-787c-4db5-b5fb-73db39cd672f
-m	java:S106+"+Replace this use of System.out by a logger.(Ú÷•Ï8ßÏÒ“î1J$c7012a05-7cb7-4dd7-be5d-af49d6c0c400
-m	java:S1062"+Replace this use of System.out by a logger.(àïôÊ8ßÏÒ“î1J$c148c366-af7c-4a1e-b23b-76a1655be0fb
+java:S1197"*Move the array designators [] to the type.(©íôŒ8ÙÏÒ“î1J$700648e4-47c5-403f-b938-c73e35fd9e35
+m	java:S106"+Replace this use of System.out by a logger.(Ä™¶Æ8ÚÏÒ“î1J$02ae0db9-969e-4e85-b8d1-b8e58dd340ec
+m	java:S106"+Replace this use of System.out by a logger.(½šÆÛ8ÛÏÒ“î1J$4e117a9e-77c0-44e8-bb4a-1103a28ee9c8
+m	java:S106"+Replace this use of System.out by a logger.(‚ÎšÛ8ÜÏÒ“î1J$b205792f-199c-476b-b71b-23a3559273fe
+l	java:S106"+Replace this use of System.out by a logger.(š²ıc8ÜÏÒ“î1J$7b8a2504-14ce-4a78-a55b-b1d8fd0e8854
+m	java:S106"+Replace this use of System.out by a logger.(‚ÎšÛ8ÜÏÒ“î1J$c33861f0-c2ea-4c2c-9185-f5f7c79ceb2e
+m	java:S106"+Replace this use of System.out by a logger.(èå”8İÏÒ“î1J$cdb13ba5-47c1-4d35-8112-df78fc0b00ee
+m	java:S106"+Replace this use of System.out by a logger.(¯Óêï8İÏÒ“î1J$3510de0a-1397-445d-80dd-cc585a5d2d4c
+m	java:S106 "+Replace this use of System.out by a logger.(‰¨ËÓ8ŞÏÒ“î1J$633885b5-a43d-40dc-8534-8a4766de3fb0
+r	java:S106#"+Replace this use of System.out by a logger.(äßŸµşÿÿÿÿ8ŞÏÒ“î1J$4b04618a-6004-4753-b3a8-c27f875c32b6
+m	java:S106+"+Replace this use of System.out by a logger.(Ú÷•Ï8ßÏÒ“î1J$1d06b89f-4edd-458a-9bda-33345debcb1b
+m	java:S1062"+Replace this use of System.out by a logger.(àïôÊ8ßÏÒ“î1J$da1391d7-a62a-4a78-a595-7a26a72e7447
 o
-java:S1125D"'Remove the unnecessary boolean literal.(»«Ÿùşÿÿÿÿ8®Ê²•î1J$9a9bb9df-31b2-4972-a0ca-7e0ace1d3f0c
+java:S1125D"'Remove the unnecessary boolean literal.(»«Ÿùşÿÿÿÿ8®Ê²•î1J$0121592b-64aa-4647-81dd-26befc17af01
 ˆ
-java:S6541"ÄA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 76 to 64, Complexity from 67 to 14, Nesting Level from 4 to 2, Number of Variables from 9 to 6.(Çµí‘8îÏÒ“î1J$e4746a4c-b3a4-4528-956d-cf612821328c
+java:S6541"ÄA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 76 to 64, Complexity from 67 to 14, Nesting Level from 4 to 2, Number of Variables from 9 to 6.(Çµí‘8îÏÒ“î1J$32747b9c-c9d1-4503-9175-ecbe17a47d5a
