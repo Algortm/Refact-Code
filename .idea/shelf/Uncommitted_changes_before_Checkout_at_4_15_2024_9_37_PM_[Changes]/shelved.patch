@@ -1,0 +1,58 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"621a1151-e54a-47b7-8583-564d91597905\" name=\"Changes\" comment=\"Korysh\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/pom.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Game_of_Combo/Game_of_Combo.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/GameOfCombo/GameOfCombo.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Game_of_Combo/Main.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/GameOfCombo/Main.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\"><![CDATA[{\r\n  \"associatedIndex\": 8\r\n}]]></component>\r\n  <component name=\"ProjectId\" id=\"2f9NOd7xihFZAETv4qZz4CkzgNn\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Application.Main.executor\": \"Run\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SONARLINT_PRECOMMIT_ANALYSIS\": \"true\",\r\n    \"git-widget-placeholder\": \"KoryshModule2Refactoring\",\r\n    \"ignore.virus.scanning.warn.message\": \"true\",\r\n    \"kotlin-language-version-configured\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task id=\"LOCAL-00001\" summary=\"Korysh\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1713200218878</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1713200218878</updated>\r\n    </task>\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"621a1151-e54a-47b7-8583-564d91597905\" name=\"Changes\" comment=\"Korysh\" />\r\n      <created>1713209305103</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1713209305103</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Korysh\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Korysh\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,14 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="621a1151-e54a-47b7-8583-564d91597905" name="Changes" comment="Korysh">
+-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/Game_of_Combo/Game_of_Combo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameOfCombo/GameOfCombo.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/Game_of_Combo/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameOfCombo/Main.java" afterDir="false" />
+-    </list>
++    <list default="true" id="621a1151-e54a-47b7-8583-564d91597905" name="Changes" comment="Korysh_cwe" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -56,11 +49,28 @@
+       <option name="presentableId" value="Default" />
+       <updated>1713209305103</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
++    <task id="LOCAL-00002" summary="Korysh">
++      <option name="closed" value="true" />
++      <created>1713209688112</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1713209688112</updated>
++    </task>
++    <task id="LOCAL-00003" summary="Korysh_cwe">
++      <option name="closed" value="true" />
++      <created>1713209754024</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1713209754024</updated>
++    </task>
++    <option name="localTasksCounter" value="4" />
+     <servers />
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="Korysh" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Korysh" />
++    <MESSAGE value="Korysh_cwe" />
++    <option name="LAST_COMMIT_MESSAGE" value="Korysh_cwe" />
+   </component>
+ </project>
+\ No newline at end of file

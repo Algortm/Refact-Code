@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="621a1151-e54a-47b7-8583-564d91597905" name="Changes" comment="Korysh">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Game_of_Combo/Game_of_Combo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameOfCombo/GameOfCombo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Game_of_Combo/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameOfCombo/Main.java" afterDir="false" />
-    </list>
+    <list default="true" id="621a1151-e54a-47b7-8583-564d91597905" name="Changes" comment="Korysh" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,9 +13,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2f9NOd7xihFZAETv4qZz4CkzgNn" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -34,7 +27,7 @@
     "Application.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "git-widget-placeholder": "KoryshModule2Refactoring",
+    "git-widget-placeholder": "#36 on Rebasing KoryshModule2Refactoring",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true"
   }
@@ -61,6 +54,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Korysh" />
-    <option name="LAST_COMMIT_MESSAGE" value="Korysh" />
+    <MESSAGE value="Yurii Koryshko Module2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Yurii Koryshko Module2" />
   </component>
 </project>
