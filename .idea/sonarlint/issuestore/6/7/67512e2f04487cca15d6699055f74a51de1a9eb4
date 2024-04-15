@@ -1,0 +1,23 @@
+
+ 	java:S135"YReduce the total number of break and continue statements in this loop to use at most one.(˜ïˆÿÿÿÿÿ8ÕÍÒ“î1J$7965cd50-2ed7-49eb-bf37-3759f92de1f7
+•
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 71 to the 15 allowed.(Çµí‘8¾ÏÒ“î1J$6427fc7d-829e-482b-9445-b0a03c536795
+^
+java:S3626U"Remove this redundant jump.(ÉŠ©ƒ8¤Ê²•î1J$0a360865-dcc6-4bc8-952b-600de386780a
+m
+java:S1197"*Move the array designators [] to the type.(©íôŒ8ÙÏÒ“î1J$569ffa1a-e218-4dd7-b324-f2be91e1e24e
+m	java:S106"+Replace this use of System.out by a logger.(Ä™¶Æ8ÚÏÒ“î1J$2326994d-ed31-4ffa-8d0f-d16e11dab549
+m	java:S106"+Replace this use of System.out by a logger.(½šÆÛ8ÛÏÒ“î1J$5fa73512-813e-48dd-a310-3219b7c44615
+m	java:S106"+Replace this use of System.out by a logger.(‚ÎšÛ8ÜÏÒ“î1J$3d70833e-29b5-4a72-a377-3f5676be7d15
+l	java:S106"+Replace this use of System.out by a logger.(š²ıc8ÜÏÒ“î1J$440d21b6-9186-458d-bf77-40b5631cf5fe
+m	java:S106"+Replace this use of System.out by a logger.(‚ÎšÛ8ÜÏÒ“î1J$b5c520ea-7804-42ec-81a1-2a31d3b03d5d
+m	java:S106"+Replace this use of System.out by a logger.(èå”8İÏÒ“î1J$8ead571b-8f2d-47dd-9c8e-93439256a322
+m	java:S106"+Replace this use of System.out by a logger.(¯Óêï8İÏÒ“î1J$62984e01-364d-4c0c-b98a-6667eae73998
+m	java:S106 "+Replace this use of System.out by a logger.(‰¨ËÓ8ŞÏÒ“î1J$14125653-e1a2-45a4-b143-21a83774388e
+r	java:S106#"+Replace this use of System.out by a logger.(äßŸµşÿÿÿÿ8ŞÏÒ“î1J$e3d29404-7331-4c14-bb37-5e72b89569ea
+m	java:S106+"+Replace this use of System.out by a logger.(Ú÷•Ï8ßÏÒ“î1J$d26a673f-fcd5-4379-bccf-ccf9dcd6737d
+m	java:S1062"+Replace this use of System.out by a logger.(àïôÊ8ßÏÒ“î1J$0e36439b-6778-456a-bfae-43b610482415
+o
+java:S1125D"'Remove the unnecessary boolean literal.(»«Ÿùşÿÿÿÿ8®Ê²•î1J$4f4c7250-52a6-4a13-85d9-bcf469848d6f
+ˆ
+java:S6541"ÄA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 76 to 64, Complexity from 67 to 14, Nesting Level from 4 to 2, Number of Variables from 9 to 6.(Çµí‘8îÏÒ“î1J$923cc4c0-d6fa-4eaf-b669-2d5b9b6c177f
