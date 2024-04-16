@@ -104,8 +104,4 @@ public class TicTacToeGame {
         }
         return true;
     }
-    public static void main(String[] args) {
-        TicTacToeGame tacToeGame = new TicTacToeGame();
-        tacToeGame.runGame();
-    }
 }
