@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class App {
 
-    // Константні зміни для легшого написання коду та зміни в майбутньому.
+    // Constant changes for easier code writing and future changes.
     private static final char EMPTY = ' ';
     private static final char PLAYER = 'X';
     private static final char COMPUTER = 'O';
@@ -13,8 +13,8 @@ public class App {
 
 
 
-    // Головний метод, який викликає всі інші методи для виконання гри.
-    public static void main(String[] args) {
+    // The main method that calls all other methods to perform the game.
+    public static void runGame() {
         Scanner scan = new Scanner(System.in);
         List<Character> box = new ArrayList<>();
         for (int i = 0; i < SIZE; i++) {
@@ -38,7 +38,7 @@ public class App {
     }
 
 
-    // Методи для виведення ігрового поля, ходу гравця, ходу комп'ютера, перевірки стану гри та виведення результату.
+    // Methods for displaying the game board, player's move, computer's move, checking the game state, and displaying the result.
     private static void printBoard(List<Character> box) {
         System.out.println("\n\n " + box.get(0) + " | " + box.get(1) + " | " + box.get(2) + " ");
         System.out.println("-----------");
@@ -48,7 +48,7 @@ public class App {
     }
 
 
-    // Методи для ходу гравця та комп'ютера.
+    // Methods for the player's and computer's moves.
     private static void playerTurn(Scanner scan, List<Character> box) {
         while (true) {
             int input = scan.nextInt();
@@ -62,7 +62,7 @@ public class App {
     }
 
 
-    // Метод для ходу комп'ютера.
+    // Method for the computer's move.
     private static void computerTurn(List<Character> box) {
         while (true) {
             int rand = (int) (Math.random() * SIZE);
@@ -74,7 +74,7 @@ public class App {
     }
 
 
-    // Метод для перевірки стану гри.
+    // Method for checking the game state.
     private static GameState checkGameState(List<Character> box, char player) {
         if (isWinning(box, player)) {
             return player == PLAYER ? GameState.WIN : GameState.LOSE;
@@ -88,7 +88,7 @@ public class App {
     }
 
 
-    // Метод для перевірки переможних комбінацій.
+    // Method for checking winning combinations.
     private static boolean isWinning(List<Character> box, char player) {
         return (box.get(0) == player && box.get(1) == player && box.get(2) == player) ||
                 (box.get(3) == player && box.get(4) == player && box.get(5) == player) ||
@@ -101,7 +101,7 @@ public class App {
     }
 
 
-    // Метод для виведення результату гри.
+    // Method for displaying the game result.
     private static void printResult(GameState gameState) {
         switch (gameState) {
             case WIN:
@@ -114,10 +114,5 @@ public class App {
                 System.out.println("It's a draw!\nCreated by Shreyas Saha. Thanks for playing!");
                 break;
         }
-    }
-
-    // Перечислення для стану гри.
-    private enum GameState {
-        WIN, LOSE, DRAW, CONTINUE
     }
 }
