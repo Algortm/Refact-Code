@@ -3,6 +3,10 @@ package org.example.game;
 import java.util.Scanner;
 
 public class TicTacToeGame {
+    private static final char HUMAN_MARKER = 'X';
+    private static final char COMPUTER_MARKER = 'O';
+    private static final int BOARD_SIZE = 9;
+
     public void play() {
         Scanner scanner = new Scanner(System.in);
         byte winner = 0;
@@ -13,7 +17,7 @@ public class TicTacToeGame {
             printBoard(board);
 
             if (!boardEmpty) {
-                for (byte i = 0; i < 9; i++)
+                for (byte i = 0; i < BOARD_SIZE; i++)
                     board[i] = ' ';
                 boardEmpty = true;
             }
@@ -24,9 +28,9 @@ public class TicTacToeGame {
             }
 
             byte userMove = getUserMove(scanner, board);
-            board[userMove - 1] = 'X';
+            board[userMove - 1] = HUMAN_MARKER;
 
-            if (checkWin(board, 'X')) {
+            if (checkWin(board, HUMAN_MARKER)) {
                 winner = 1;
                 continue;
             }
@@ -37,9 +41,9 @@ public class TicTacToeGame {
             }
 
             byte computerMove = getComputerMove(board);
-            board[computerMove - 1] = 'O';
+            board[computerMove - 1] = COMPUTER_MARKER;
 
-            if (checkWin(board, 'O')) {
+            if (checkWin(board, COMPUTER_MARKER)) {
                 winner = 2;
             }
         }
@@ -67,7 +71,7 @@ public class TicTacToeGame {
         while (true) {
             byte input = scanner.nextByte();
             if (input > 0 && input < 10) {
-                if (board[input - 1] == 'X' || board[input - 1] == 'O')
+                if (board[input - 1] == HUMAN_MARKER || board[input - 1] == COMPUTER_MARKER)
                     System.out.println("That one is already in use. Enter another.");
                 else {
                     return input;
@@ -80,8 +84,8 @@ public class TicTacToeGame {
     public byte getComputerMove(char[] board) {
         byte rand;
         while (true) {
-            rand = (byte) (Math.random() * (9 - 1 + 1) + 1);
-            if (board[rand - 1] != 'X' && board[rand - 1] != 'O') {
+            rand = (byte) (Math.random() * BOARD_SIZE + 1);
+            if (board[rand - 1] != HUMAN_MARKER && board[rand - 1] != COMPUTER_MARKER) {
                 return rand;
             }
         }
@@ -99,8 +103,8 @@ public class TicTacToeGame {
     }
 
     public boolean checkDraw(char[] board) {
-        for (byte i = 0; i < 9; i++) {
-            if (board[i] != 'X' && board[i] != 'O') {
+        for (byte i = 0; i < BOARD_SIZE; i++) {
+            if (board[i] != HUMAN_MARKER && board[i] != COMPUTER_MARKER) {
                 return false;
             }
         }
