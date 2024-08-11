@@ -20,6 +20,18 @@ public class TicTacToeGame {
         resetBoard();
     }
 
+    public static void printMessageToUser(String message, boolean newLine) {
+        if (newLine) {
+            System.out.println(message); //NOSONAR
+        } else {
+            System.out.print(message); //NOSONAR
+        }
+    }
+
+    public static void printFormattedMessageToUser(String format, Object... args) {
+        System.out.printf(format, args); //NOSONAR
+    }
+
     private void initializeNumberedBoard() {
         IntStream.range(0, BOARD_SIZE).forEach(i -> board[i] = String.valueOf(i + 1));
     }
@@ -52,19 +64,19 @@ public class TicTacToeGame {
     }
 
     public void printBoard() {
-        System.out.println();
+        printMessageToUser("", true);
         for (int i = 0; i < BOARD_SIZE; i++) {
-            System.out.printf("%2s", board[i]);
+            printFormattedMessageToUser("%2s", board[i]);
             if ((i + 1) % ROW_SIZE == 0) {
-                System.out.println();
+                printMessageToUser("", true);
                 if (i < BOARD_SIZE - 1) {
-                    System.out.println("----".repeat(ROW_SIZE));
+                    printMessageToUser("----".repeat(ROW_SIZE), true);
                 }
             } else {
-                System.out.print(" | ");
+                printMessageToUser(" | ", false);
             }
         }
-        System.out.println();
+        printMessageToUser("", true);
     }
 
     private void displayResult(Result result) {
@@ -72,9 +84,8 @@ public class TicTacToeGame {
             case USER_WON -> "You won the game!";
             case COMPUTER_WON -> "You lost the game!";
             case DRAW -> "It's a draw!";
-            default -> "Unexpected result!";
         };
-        System.out.println(message + "\nCreated by Shreyas Saha. Thanks for playing!");
+        printMessageToUser(message + "\nCreated by Shreyas Saha. Thanks for playing!", true);
     }
 
     private void makeMove(char player) {
@@ -94,12 +105,12 @@ public class TicTacToeGame {
     private byte getUserMove() {
         byte input;
         while (true) {
-            System.out.print("Enter your move: ");
+            printMessageToUser("Enter your move: ", true);
             input = scanner.nextByte();
             if (input >= 1 && input <= BOARD_SIZE) {
                 return input;
             }
-            System.out.println("Invalid input. Enter again.");
+            printMessageToUser("Invalid input. Enter again.", true);
         }
     }
 
@@ -112,27 +123,31 @@ public class TicTacToeGame {
     }
 
     private boolean checkWinner(char player) {
+        return checkRows(player) || checkColumns(player) || checkDiagonals(player);
+    }
+
+    private boolean checkRows(char player) {
         for (int i = 0; i < BOARD_SIZE; i += ROW_SIZE) {
             if (IntStream.range(i, i + ROW_SIZE).allMatch(j -> board[j].equals(String.valueOf(player)))) {
                 return true;
             }
         }
+        return false;
+    }
 
+    private boolean checkColumns(char player) {
         for (int i = 0; i < ROW_SIZE; i++) {
             int finalI = i;
             if (IntStream.range(0, ROW_SIZE).allMatch(j -> board[finalI + j * ROW_SIZE].equals(String.valueOf(player)))) {
                 return true;
             }
         }
-
-        if (IntStream.range(0, ROW_SIZE).allMatch(i -> board[i * (ROW_SIZE + 1)].equals(String.valueOf(player)))) {
-            return true;
-        }
-        if (IntStream.range(1, ROW_SIZE + 1).allMatch(i -> board[i * (ROW_SIZE - 1)].equals(String.valueOf(player)))) {
-            return true;
-        }
-
         return false;
+    }
+
+    private boolean checkDiagonals(char player) {
+        return IntStream.range(0, ROW_SIZE).allMatch(i -> board[i * (ROW_SIZE + 1)].equals(String.valueOf(player))) ||
+                IntStream.range(1, ROW_SIZE + 1).allMatch(i -> board[i * (ROW_SIZE - 1)].equals(String.valueOf(player)));
     }
 
     private boolean checkDraw() {
