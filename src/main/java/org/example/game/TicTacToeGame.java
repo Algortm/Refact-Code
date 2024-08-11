@@ -25,16 +25,15 @@ public class TicTacToeGame {
 
     public void play() {
         while (true) {
-
             if (checkWinner(USER_MARK)) {
                 printBoard();
-                displayResult(1);
+                displayResult(Result.USER_WON);
                 return;
             }
 
             if (checkDraw()) {
                 printBoard();
-                displayResult(3);
+                displayResult(Result.DRAW);
                 return;
             }
 
@@ -42,20 +41,20 @@ public class TicTacToeGame {
 
             if (checkWinner(USER_MARK)) {
                 printBoard();
-                displayResult(1);
+                displayResult(Result.USER_WON);
                 return;
             }
 
             if (checkDraw()) {
                 printBoard();
-                displayResult(3);
+                displayResult(Result.DRAW);
                 return;
             }
 
             makeComputerMove();
             if (checkWinner(COMPUTER_MARK)) {
                 printBoard();
-                displayResult(2);
+                displayResult(Result.COMPUTER_WON);
                 return;
             }
 
@@ -77,15 +76,15 @@ public class TicTacToeGame {
         System.out.println(" " + board[6] + " | " + board[7] + " | " + board[8] + " \n");
     }
 
-    private void displayResult(int result) {
+    private void displayResult(Result result) {
         switch (result) {
-            case 1:
+            case USER_WON:
                 System.out.println("You won the game!\nCreated by Shreyas Saha. Thanks for playing!");
                 break;
-            case 2:
+            case COMPUTER_WON:
                 System.out.println("You lost the game!\nCreated by Shreyas Saha. Thanks for playing!");
                 break;
-            case 3:
+            case DRAW:
                 System.out.println("It's a draw!\nCreated by Shreyas Saha. Thanks for playing!");
                 break;
             default:
