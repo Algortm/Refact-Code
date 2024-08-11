@@ -12,6 +12,7 @@ public class TicTacToeGame {
 
     private final char[] board = new char[BOARD_SIZE];
     private final Scanner scanner = new Scanner(System.in);
+    private final char[] players = {USER_MARK, COMPUTER_MARK};
 
     public TicTacToeGame() {
         initializeNumberedBoard();
@@ -24,41 +25,25 @@ public class TicTacToeGame {
     }
 
     public void play() {
+        int currentPlayerIndex = 0;
+
         while (true) {
-            if (checkWinner(USER_MARK)) {
+            makeMove(players[currentPlayerIndex]);
+
+            if (checkWinner(players[currentPlayerIndex])) {
                 printBoard();
-                displayResult(Result.USER_WON);
+                displayResult(players[currentPlayerIndex] == USER_MARK ? Result.USER_WON : Result.COMPUTER_WON);
                 return;
             }
 
             if (checkDraw()) {
                 printBoard();
                 displayResult(Result.DRAW);
-                return;
-            }
-
-            makeUserMove();
-
-            if (checkWinner(USER_MARK)) {
-                printBoard();
-                displayResult(Result.USER_WON);
-                return;
-            }
-
-            if (checkDraw()) {
-                printBoard();
-                displayResult(Result.DRAW);
-                return;
-            }
-
-            makeComputerMove();
-            if (checkWinner(COMPUTER_MARK)) {
-                printBoard();
-                displayResult(Result.COMPUTER_WON);
                 return;
             }
 
             printBoard();
+            currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
         }
     }
 
@@ -90,6 +75,12 @@ public class TicTacToeGame {
             default -> "Unexpected result!";
         };
         System.out.println(message + "\nCreated by Shreyas Saha. Thanks for playing!");
+    }
+
+    private void makeMove(char player){
+        if(player == USER_MARK){
+            makeUserMove();
+        } else makeComputerMove();
     }
 
     private void makeUserMove() {
