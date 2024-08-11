@@ -1,6 +1,7 @@
 package org.example.game;
 
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 public class TicTacToeGame {
     private static final char USER_MARK = 'X';
@@ -18,9 +19,7 @@ public class TicTacToeGame {
     }
 
     private void initializeNumberedBoard() {
-        for (int i = 0; i < BOARD_SIZE; i++) {
-            board[i] = (char) ('1' + i);
-        }
+        IntStream.range(0, BOARD_SIZE).forEach(i -> board[i] = (char) ('1' + i));
     }
 
     public void play() {
@@ -63,9 +62,7 @@ public class TicTacToeGame {
     }
 
     private void resetBoard() {
-        for (int i = 0; i < BOARD_SIZE; i++) {
-            board[i] = EMPTY_CELL;
-        }
+        IntStream.range(0, BOARD_SIZE).forEach(i -> board[i] = EMPTY_CELL);
     }
 
     public void printBoard() {
@@ -133,11 +130,6 @@ public class TicTacToeGame {
     }
 
     private boolean checkDraw() {
-        for (char cell : board) {
-            if (cell != USER_MARK && cell != COMPUTER_MARK) {
-                return false;
-            }
-        }
-        return true;
+        return IntStream.range(0, BOARD_SIZE).noneMatch(i -> board[i] == EMPTY_CELL);
     }
 }
