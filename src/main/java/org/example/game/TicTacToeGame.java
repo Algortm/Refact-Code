@@ -6,7 +6,7 @@ import java.util.stream.IntStream;
 public class TicTacToeGame {
     private static final char USER_MARK = 'X';
     private static final char COMPUTER_MARK = 'O';
-    private static final int BOARD_SIZE = 9;
+    private static final int BOARD_SIZE = 16;
     private static final int ROW_SIZE = (int) Math.sqrt(BOARD_SIZE);
     private static final char EMPTY_CELL = ' ';
 
@@ -96,7 +96,7 @@ public class TicTacToeGame {
         while (true) {
             System.out.print("Enter your move: ");
             input = scanner.nextByte();
-            if (input >= 1 && input <= 9) {
+            if (input >= 1 && input <= BOARD_SIZE) {
                 return input;
             }
             System.out.println("Invalid input. Enter again.");
@@ -112,14 +112,27 @@ public class TicTacToeGame {
     }
 
     private boolean checkWinner(char player) {
-        return (board[0] == player && board[1] == player && board[2] == player) ||
-                (board[3] == player && board[4] == player && board[5] == player) ||
-                (board[6] == player && board[7] == player && board[8] == player) ||
-                (board[0] == player && board[3] == player && board[6] == player) ||
-                (board[1] == player && board[4] == player && board[7] == player) ||
-                (board[2] == player && board[5] == player && board[8] == player) ||
-                (board[0] == player && board[4] == player && board[8] == player) ||
-                (board[2] == player && board[4] == player && board[6] == player);
+        for (int i = 0; i < BOARD_SIZE; i += ROW_SIZE) {
+            if (IntStream.range(i, i + ROW_SIZE).allMatch(j -> board[j] == player)) {
+                return true;
+            }
+        }
+
+        for (int i = 0; i < ROW_SIZE; i++) {
+            int finalI = i;
+            if (IntStream.range(0, ROW_SIZE).allMatch(j -> board[finalI + j * ROW_SIZE] == player)) {
+                return true;
+            }
+        }
+
+        if (IntStream.range(0, ROW_SIZE).allMatch(i -> board[i * (ROW_SIZE + 1)] == player)) {
+            return true;
+        }
+        if (IntStream.range(1, ROW_SIZE + 1).allMatch(i -> board[i * (ROW_SIZE - 1)] == player)) {
+            return true;
+        }
+
+        return false;
     }
 
     private boolean checkDraw() {
