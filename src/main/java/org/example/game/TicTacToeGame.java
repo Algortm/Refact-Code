@@ -7,6 +7,7 @@ public class TicTacToeGame {
     private static final char USER_MARK = 'X';
     private static final char COMPUTER_MARK = 'O';
     private static final int BOARD_SIZE = 9;
+    private static final int ROW_SIZE = (int) Math.sqrt(BOARD_SIZE);
     private static final char EMPTY_CELL = ' ';
 
     private final char[] board = new char[BOARD_SIZE];
@@ -66,11 +67,19 @@ public class TicTacToeGame {
     }
 
     public void printBoard() {
-        System.out.println("\n\n " + board[0] + " | " + board[1] + " | " + board[2] + " ");
-        System.out.println("-----------");
-        System.out.println(" " + board[3] + " | " + board[4] + " | " + board[5] + " ");
-        System.out.println("-----------");
-        System.out.println(" " + board[6] + " | " + board[7] + " | " + board[8] + " \n");
+        System.out.println();
+        for (int i = 0; i < BOARD_SIZE; i++) {
+            System.out.print(" " + board[i]);
+            if ((i + 1) % ROW_SIZE == 0) {
+                System.out.println();
+                if (i < BOARD_SIZE - 1) {
+                    System.out.println("--".repeat(ROW_SIZE * 2 - 1));
+                }
+            } else {
+                System.out.print(" |");
+            }
+        }
+        System.out.println();
     }
 
     private void displayResult(Result result) {
