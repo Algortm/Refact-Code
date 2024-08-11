@@ -3,53 +3,57 @@ package org.example.game;
 import java.util.Scanner;
 
 public class TicTacToeGame {
-    private static final char HUMAN_MARKER = 'X';
-    private static final char COMPUTER_MARKER = 'O';
+    private static final char USER_MARK = 'X';
+    private static final char COMPUTER_MARK = 'O';
     private static final int BOARD_SIZE = 9;
+    private static final char EMPTY_CELL = ' ';
+
+    private final char[] board = new char[BOARD_SIZE];
+    private final Scanner scanner = new Scanner(System.in);
 
     public void play() {
-        Scanner scanner = new Scanner(System.in);
-        byte winner = 0;
-        char[] board = new char[]{'1', '2', '3', '4', '5', '6', '7', '8', '9'};
-        boolean boardEmpty = false;
-
+        resetBoard();
         while (true) {
-            printBoard(board);
+            printBoard();
 
-            if (!boardEmpty) {
-                for (byte i = 0; i < BOARD_SIZE; i++)
-                    board[i] = ' ';
-                boardEmpty = true;
+            if (checkWinner(USER_MARK)) {
+                displayResult(1);
+                return;
             }
 
-            if (winner != 0) {
-                displayResult(winner);
-                break;
+            if (checkDraw()) {
+                displayResult(3);
+                return;
             }
 
-            byte userMove = getUserMove(scanner, board);
-            board[userMove - 1] = HUMAN_MARKER;
-
-            if (checkWin(board, HUMAN_MARKER)) {
-                winner = 1;
-                continue;
+            makeUserMove();
+            if (checkWinner(USER_MARK)) {
+                printBoard();
+                displayResult(1);
+                return;
             }
 
-            if (checkDraw(board)) {
-                winner = 3;
-                continue;
+            if (checkDraw()) {
+                printBoard();
+                displayResult(3);
+                return;
             }
 
-            byte computerMove = getComputerMove(board);
-            board[computerMove - 1] = COMPUTER_MARKER;
-
-            if (checkWin(board, COMPUTER_MARKER)) {
-                winner = 2;
+            makeComputerMove();
+            if (checkWinner(COMPUTER_MARK)) {
+                displayResult(2);
+                return;
             }
         }
     }
 
-    public void printBoard(char[] board) {
+    private void resetBoard() {
+        for (int i = 0; i < BOARD_SIZE; i++) {
+            board[i] = EMPTY_CELL;
+        }
+    }
+
+    public void printBoard() {
         System.out.println("\n\n " + board[0] + " | " + board[1] + " | " + board[2] + " ");
         System.out.println("-----------");
         System.out.println(" " + board[3] + " | " + board[4] + " | " + board[5] + " ");
@@ -57,41 +61,50 @@ public class TicTacToeGame {
         System.out.println(" " + board[6] + " | " + board[7] + " | " + board[8] + " \n");
     }
 
-    public void displayResult(byte winner) {
-        if (winner == 1) {
-            System.out.println("You won the game!\nCreated by Shreyas Saha. Thanks for playing!");
-        } else if (winner == 2) {
-            System.out.println("You lost the game!\nCreated by Shreyas Saha. Thanks for playing!");
-        } else if (winner == 3) {
-            System.out.println("It's a draw!\nCreated by Shreyas Saha. Thanks for playing!");
+
+    private void displayResult(int result) {
+        switch (result) {
+            case 1:
+                System.out.println("You won the game!\nCreated by Shreyas Saha. Thanks for playing!");
+                break;
+            case 2:
+                System.out.println("You lost the game!\nCreated by Shreyas Saha. Thanks for playing!");
+                break;
+            case 3:
+                System.out.println("It's a draw!\nCreated by Shreyas Saha. Thanks for playing!");
+                break;
         }
     }
 
-    public byte getUserMove(Scanner scanner, char[] board) {
-        while (true) {
-            byte input = scanner.nextByte();
-            if (input > 0 && input < 10) {
-                if (board[input - 1] == HUMAN_MARKER || board[input - 1] == COMPUTER_MARKER)
-                    System.out.println("That one is already in use. Enter another.");
-                else {
-                    return input;
-                }
-            } else
-                System.out.println("Invalid input. Enter again.");
-        }
+    private void makeUserMove() {
+        byte move;
+        do {
+            move = getUserMove();
+        } while (board[move - 1] == USER_MARK || board[move - 1] == COMPUTER_MARK);
+        board[move - 1] = USER_MARK;
     }
 
-    public byte getComputerMove(char[] board) {
-        byte rand;
+    private byte getUserMove() {
+        byte input;
         while (true) {
-            rand = (byte) (Math.random() * BOARD_SIZE + 1);
-            if (board[rand - 1] != HUMAN_MARKER && board[rand - 1] != COMPUTER_MARKER) {
-                return rand;
+            System.out.print("Enter your move (1-9): ");
+            input = scanner.nextByte();
+            if (input >= 1 && input <= 9) {
+                return input;
             }
+            System.out.println("Invalid input. Enter again.");
         }
     }
 
-    public boolean checkWin(char[] board, char player) {
+    private void makeComputerMove() {
+        byte move;
+        do {
+            move = (byte) (Math.random() * BOARD_SIZE + 1);
+        } while (board[move - 1] == USER_MARK || board[move - 1] == COMPUTER_MARK);
+        board[move - 1] = COMPUTER_MARK;
+    }
+
+    private boolean checkWinner(char player) {
         return (board[0] == player && board[1] == player && board[2] == player) ||
                 (board[3] == player && board[4] == player && board[5] == player) ||
                 (board[6] == player && board[7] == player && board[8] == player) ||
@@ -102,9 +115,9 @@ public class TicTacToeGame {
                 (board[2] == player && board[4] == player && board[6] == player);
     }
 
-    public boolean checkDraw(char[] board) {
-        for (byte i = 0; i < BOARD_SIZE; i++) {
-            if (board[i] != HUMAN_MARKER && board[i] != COMPUTER_MARKER) {
+    private boolean checkDraw() {
+        for (char cell : board) {
+            if (cell != USER_MARK && cell != COMPUTER_MARK) {
                 return false;
             }
         }
