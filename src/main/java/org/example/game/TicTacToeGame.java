@@ -83,20 +83,13 @@ public class TicTacToeGame {
     }
 
     private void displayResult(Result result) {
-        switch (result) {
-            case USER_WON:
-                System.out.println("You won the game!\nCreated by Shreyas Saha. Thanks for playing!");
-                break;
-            case COMPUTER_WON:
-                System.out.println("You lost the game!\nCreated by Shreyas Saha. Thanks for playing!");
-                break;
-            case DRAW:
-                System.out.println("It's a draw!\nCreated by Shreyas Saha. Thanks for playing!");
-                break;
-            default:
-                System.out.println("Error");
-                break;
-        }
+        String message = switch (result) {
+            case USER_WON -> "You won the game!";
+            case COMPUTER_WON -> "You lost the game!";
+            case DRAW -> "It's a draw!";
+            default -> "Unexpected result!";
+        };
+        System.out.println(message + "\nCreated by Shreyas Saha. Thanks for playing!");
     }
 
     private void makeUserMove() {
