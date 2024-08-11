@@ -11,22 +11,35 @@ public class TicTacToeGame {
     private final char[] board = new char[BOARD_SIZE];
     private final Scanner scanner = new Scanner(System.in);
 
-    public void play() {
+    public TicTacToeGame() {
+        initializeNumberedBoard();
+        printBoard();
         resetBoard();
+    }
+
+    private void initializeNumberedBoard() {
+        for (int i = 0; i < BOARD_SIZE; i++) {
+            board[i] = (char) ('1' + i);
+        }
+    }
+
+    public void play() {
         while (true) {
-            printBoard();
 
             if (checkWinner(USER_MARK)) {
+                printBoard();
                 displayResult(1);
                 return;
             }
 
             if (checkDraw()) {
+                printBoard();
                 displayResult(3);
                 return;
             }
 
             makeUserMove();
+
             if (checkWinner(USER_MARK)) {
                 printBoard();
                 displayResult(1);
@@ -41,9 +54,12 @@ public class TicTacToeGame {
 
             makeComputerMove();
             if (checkWinner(COMPUTER_MARK)) {
+                printBoard();
                 displayResult(2);
                 return;
             }
+
+            printBoard();
         }
     }
 
@@ -61,7 +77,6 @@ public class TicTacToeGame {
         System.out.println(" " + board[6] + " | " + board[7] + " | " + board[8] + " \n");
     }
 
-
     private void displayResult(int result) {
         switch (result) {
             case 1:
@@ -72,6 +87,9 @@ public class TicTacToeGame {
                 break;
             case 3:
                 System.out.println("It's a draw!\nCreated by Shreyas Saha. Thanks for playing!");
+                break;
+            default:
+                System.out.println("Error");
                 break;
         }
     }
@@ -87,7 +105,7 @@ public class TicTacToeGame {
     private byte getUserMove() {
         byte input;
         while (true) {
-            System.out.print("Enter your move (1-9): ");
+            System.out.print("Enter your move: ");
             input = scanner.nextByte();
             if (input >= 1 && input <= 9) {
                 return input;
@@ -99,7 +117,7 @@ public class TicTacToeGame {
     private void makeComputerMove() {
         byte move;
         do {
-            move = (byte) (Math.random() * BOARD_SIZE + 1);
+            move = (byte) ((Math.random() * BOARD_SIZE) + 1);
         } while (board[move - 1] == USER_MARK || board[move - 1] == COMPUTER_MARK);
         board[move - 1] = COMPUTER_MARK;
     }
