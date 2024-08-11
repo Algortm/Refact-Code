@@ -1,39 +1,50 @@
+package game;
+
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
 import static java.lang.System.*;
 
 public class App {
-    private static char box[] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
+    private static final char[] BOX = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
     private static final Scanner SCANNER = new Scanner(in);
     private static final Random RANDOM = new Random();
+    private static final byte[][] WINNING_COMBINATIONS = {
+            {0, 1, 2},
+            {3, 4, 5},
+            {6, 7, 8},
+            {0, 3, 6},
+            {1, 4, 7},
+            {2, 5, 8},
+            {0, 4, 8},
+            {2, 4, 6}
+    };
 
     static {
         out.print("Enter box number to select. Enjoy!");
         printBox();
-        for (int i = 0; i < box.length; i++) {
-            box[i] = ' ';
-        }
+        Arrays.fill(BOX, ' ');
     }
 
     private static void botMove() {
         while (true) {
             int rand = RANDOM.nextInt(0, 10);
-            if (box[rand] == ' ') {
-                box[rand] = 'O';
+            if (BOX[rand] == ' ') {
+                BOX[rand] = 'O';
                 break;
             }
         }
     }
 
     private static boolean canWeContinuePlaying() {
-        if (s('O')) {
+        if (hasPlayerWon('O')) {
             out.println("You lost the game!\nCreated by Shreyas Saha. Thanks for playing!");
             return false;
-        } else if (s('X')) {
+        } else if (hasPlayerWon('X')) {
             out.println("You won the game!\nCreated by Shreyas Saha. Thanks for playing!");
             return false;
-        } else if (k()) {
+        } else if (isBoardFull()) {
             out.println("It's a draw!\nCreated by Shreyas Saha. Thanks for playing!");
             return false;
         }
@@ -41,18 +52,20 @@ public class App {
         return true;
     }
 
-    private static boolean s(char c) {
-        if ((box[0] == c && box[1] == c && box[2] == c) || (box[3] == c && box[4] == c && box[5] == c) || (box[6] == c && box[7] == c && box[8] == c) ||
-                (box[0] == c && box[3] == c && box[6] == c) || (box[1] == c && box[4] == c && box[7] == c) || (box[2] == c && box[5] == c && box[8] == c) ||
-                (box[0] == c && box[4] == c && box[8] == c) || (box[2] == c && box[4] == c && box[6] == c)) {
-            return true;
+    private static boolean hasPlayerWon(char playerSymbol) {
+        for (byte[] combination : WINNING_COMBINATIONS) {
+            if (BOX[combination[0]] == playerSymbol &&
+                    BOX[combination[1]] == playerSymbol &&
+                    BOX[combination[2]] == playerSymbol) {
+                return true;
+            }
         }
         return false;
     }
 
-    private static boolean k() {
-        for (int i = 0; i < 9; i++) {
-            if (box[i] != 'X' && box[i] != 'O') {
+    private static boolean isBoardFull() {
+        for (byte i = 0; i < 9; i++) {
+            if (BOX[i] != 'X' && BOX[i] != 'O') {
                 return false;
             }
         }
@@ -61,7 +74,7 @@ public class App {
 
     public static void startGame() {
         while (true) {
-            inputScaner();
+            inputScanner();
             botMove();
             printBox();
             if (!canWeContinuePlaying()) {
@@ -72,24 +85,26 @@ public class App {
 
     public static void printBox() {
         out.print("\n\n");
-        for (int i = 0; i < box.length; i += 3) {
-            out.printf(" %s | %s | %s %n", box[i], box[i + 1], box[i + 2]);
+        for (byte i = 0; i < BOX.length; i += 3) {
+            out.printf(" %s | %s | %s %n", BOX[i], BOX[i + 1], BOX[i + 2]);
             if (i < 6) {
                 out.println("-----------");
             }
         }
     }
 
-    public static void inputScaner() {
+    public static void inputScanner() {
         while (true) {
             out.print("\nPick the number(1 to 10): ");
             byte input = SCANNER.nextByte();
-            if (input > 0 && input < 10) {
-                int index = input - 1;
-                if (box[index] == 'X' || box[index] == 'O')
+            int index = input - 1;
+
+            if (input >= 1 && input <= 9) {
+
+                if (BOX[index] == 'X' || BOX[index] == 'O')
                     out.println("That one is already in use. Enter another.");
                 else {
-                    box[index] = 'X';
+                    BOX[index] = 'X';
                     break;
                 }
             } else {
