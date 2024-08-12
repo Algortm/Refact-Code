@@ -7,9 +7,9 @@ public class App {
         byte input;
         byte rand;
         byte i;
-        boolean boxAvailable = false;
+        boolean boxAvailable;
         byte winner = 0;
-        char box[] = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+        char[] box = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
         System.out.println("Enter box number to select. Enjoy!\n");
 
         boolean boxEmpty = false;
