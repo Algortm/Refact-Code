@@ -1,5 +1,7 @@
 package org.example.game;
 
+import org.example.util.Message;
+
 import java.util.Scanner;
 import java.util.stream.IntStream;
 
@@ -18,18 +20,6 @@ public class TicTacToeGame {
         initializeNumberedBoard();
         printBoard();
         resetBoard();
-    }
-
-    public static void printMessageToUser(String message, boolean newLine) {
-        if (newLine) {
-            System.out.println(message); //NOSONAR
-        } else {
-            System.out.print(message); //NOSONAR
-        }
-    }
-
-    public static void printFormattedMessageToUser(String format, Object... args) {
-        System.out.printf(format, args); //NOSONAR
     }
 
     private void initializeNumberedBoard() {
@@ -64,19 +54,19 @@ public class TicTacToeGame {
     }
 
     public void printBoard() {
-        printMessageToUser("", true);
+        Message.printMessageToUser("", true);
         for (int i = 0; i < BOARD_SIZE; i++) {
-            printFormattedMessageToUser("%2s", board[i]);
+            Message.printFormattedMessageToUser("%2s", board[i]);
             if ((i + 1) % ROW_SIZE == 0) {
-                printMessageToUser("", true);
+                Message.printMessageToUser("", true);
                 if (i < BOARD_SIZE - 1) {
-                    printMessageToUser("----".repeat(ROW_SIZE), true);
+                    Message.printMessageToUser("----".repeat(ROW_SIZE), true);
                 }
             } else {
-                printMessageToUser(" | ", false);
+                Message.printMessageToUser(" | ", false);
             }
         }
-        printMessageToUser("", true);
+        Message.printMessageToUser("", true);
     }
 
     private void displayResult(Result result) {
@@ -85,7 +75,7 @@ public class TicTacToeGame {
             case COMPUTER_WON -> "You lost the game!";
             case DRAW -> "It's a draw!";
         };
-        printMessageToUser(message + "\nCreated by Shreyas Saha. Thanks for playing!", true);
+        Message.printMessageToUser(message + "\nCreated by Shreyas Saha. Thanks for playing!", true);
     }
 
     private void makeMove(char player) {
@@ -105,12 +95,12 @@ public class TicTacToeGame {
     private byte getUserMove() {
         byte input;
         while (true) {
-            printMessageToUser("Enter your move: ", true);
+            Message.printMessageToUser("Enter your move: ", true);
             input = scanner.nextByte();
             if (input >= 1 && input <= BOARD_SIZE) {
                 return input;
             }
-            printMessageToUser("Invalid input. Enter again.", true);
+            Message.printMessageToUser("Invalid input. Enter again.", true);
         }
     }
 
