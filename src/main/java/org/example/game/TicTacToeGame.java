@@ -5,12 +5,8 @@ import org.example.util.Message;
 import java.util.Scanner;
 
 public class TicTacToeGame {
-    private static final char USER_MARK = 'X';
-    private static final char COMPUTER_MARK = 'O';
-
     private final Board board = new Board();
     private final Scanner scanner = new Scanner(System.in);
-    private final char[] players = {USER_MARK, COMPUTER_MARK};
 
     public TicTacToeGame() {
         board.printBoard();
@@ -18,14 +14,14 @@ public class TicTacToeGame {
     }
 
     public void play() {
-        int currentPlayerIndex = 0;
+        Player currentPlayer = Player.USER;
 
         while (true) {
-            makeMove(players[currentPlayerIndex]);
+            makeMove(currentPlayer.getMark());
 
-            if (board.checkWinner(players[currentPlayerIndex])) {
+            if (board.checkWinner(currentPlayer.getMark())) {
                 board.printBoard();
-                displayResult(players[currentPlayerIndex] == USER_MARK ? Result.USER_WON : Result.COMPUTER_WON);
+                displayResult(currentPlayer == Player.USER ? Result.USER_WON : Result.COMPUTER_WON);
                 return;
             }
 
@@ -36,7 +32,7 @@ public class TicTacToeGame {
             }
 
             board.printBoard();
-            currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
+            currentPlayer = currentPlayer.next();
         }
     }
 
@@ -50,7 +46,7 @@ public class TicTacToeGame {
     }
 
     private void makeMove(char player) {
-        if (player == USER_MARK) {
+        if (player == Player.USER.getMark()) {
             makeUserMove();
         } else makeComputerMove();
     }
@@ -60,7 +56,7 @@ public class TicTacToeGame {
         do {
             move = getUserMove();
         } while (!board.isCellEmpty(move - 1));
-        board.updateCell(move - 1, USER_MARK);
+        board.updateCell(move - 1, Player.USER.getMark());
     }
 
     private byte getUserMove() {
@@ -80,6 +76,6 @@ public class TicTacToeGame {
         do {
             move = (byte) ((Math.random() * board.getBoardSize()) + 1);
         } while (!board.isCellEmpty(move - 1));
-        board.updateCell(move - 1, COMPUTER_MARK);
+        board.updateCell(move - 1, Player.COMPUTER.getMark());
     }
 }
