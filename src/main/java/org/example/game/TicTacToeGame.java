@@ -5,10 +5,11 @@ import org.example.util.Message;
 import java.util.Scanner;
 
 public class TicTacToeGame {
-    private final Board board = new Board();
+    private final Board board;
     private final Scanner scanner = new Scanner(System.in);
 
-    public TicTacToeGame() {
+    public TicTacToeGame(int boardSize) {
+        this.board = new Board(boardSize);
         board.printBoard();
         board.resetBoard();
     }
@@ -64,7 +65,7 @@ public class TicTacToeGame {
         while (true) {
             Message.printMessageToUser("Enter your move: ", true);
             input = scanner.nextByte();
-            if (input >= 1 && input <= board.getBoardSize()) {
+            if (input >= 1 && input < (board.getBoardSize() + 1)) {
                 return input;
             }
             Message.printMessageToUser("Invalid input. Enter again.", true);
