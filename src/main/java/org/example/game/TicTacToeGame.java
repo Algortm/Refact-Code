@@ -40,12 +40,7 @@ public class TicTacToeGame {
     }
 
     private void displayResult(Result result) {
-        String message = switch (result) {
-            case USER_WON -> "You won the game!";
-            case COMPUTER_WON -> "You lost the game!";
-            case DRAW -> "It's a draw!";
-        };
-        Message.printMessageToUser(message + "\nCreated by Shreyas Saha. Thanks for playing!", true);
+        Message.printMessageToUser(result.getMessage() + "\nCreated by Shreyas Saha. Thanks for playing!", true);
     }
 
     private void makeMove(char player) {
