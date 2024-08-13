@@ -99,5 +99,5 @@ The project is organised into several packages and classes, each responsible for
 
 ## Customisation
 
-- **Board Size**: The current implementation uses a fixed 3x3 board (9 cells). To modify this, you would need to adjust the `BOARD_SIZE` value and associated logic in the `Board` class.
+- **Board Size**: The current implementation uses a fixed 3x3 board (9 cells). To change this, adjust the `boardSize` value passed to the `TicTacToeGame` constructor in the `App` class, along with the associated logic in the `Board` class.
 - **Computer AI**: The current computer opponent uses a simple random move strategy. This can be enhanced by implementing more advanced algorithms like Minimax.
