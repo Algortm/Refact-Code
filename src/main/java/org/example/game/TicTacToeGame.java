@@ -61,14 +61,19 @@ public class TicTacToeGame {
     }
 
     private byte getUserMove() {
-        byte input;
         while (true) {
-            Message.printMessageToUser("Enter your move: ", true);
-            input = scanner.nextByte();
-            if (input >= 1 && input < (board.getBoardSize() + 1)) {
-                return input;
+            try {
+                Message.printMessageToUser("Enter your move: ", true);
+                String inputString = scanner.next();
+                int input = Integer.parseInt(inputString);
+                if (input >= 1 && input < (board.getBoardSize() + 1)) {
+                    return (byte) input;
+                } else {
+                    Message.printMessageToUser("Invalid input. Enter again.", true);
+                }
+            } catch (NumberFormatException e) {
+                Message.printMessageToUser("Invalid input. Enter again.", true);
             }
-            Message.printMessageToUser("Invalid input. Enter again.", true);
         }
     }
 
