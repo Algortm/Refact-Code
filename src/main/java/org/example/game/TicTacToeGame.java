@@ -2,11 +2,13 @@ package org.example.game;
 
 import org.example.util.Message;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class TicTacToeGame {
     private final Board board;
     private final Scanner scanner = new Scanner(System.in);
+    private final Random random = new Random();
 
     public TicTacToeGame(int boardSize) {
         this.board = new Board(boardSize);
@@ -80,7 +82,7 @@ public class TicTacToeGame {
     private void makeComputerMove() {
         byte move;
         do {
-            move = (byte) ((Math.random() * board.getBoardSize()) + 1);
+            move = (byte) (random.nextInt(board.getBoardSize()) + 1);
         } while (!board.isCellEmpty(move - 1));
         board.updateCell(move - 1, Player.COMPUTER.getMark());
     }
