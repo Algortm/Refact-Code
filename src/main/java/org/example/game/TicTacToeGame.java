@@ -7,11 +7,12 @@ import java.util.Scanner;
 
 public class TicTacToeGame {
     private final Board board;
-    private final Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner;
     private final Random random = new Random();
 
-    public TicTacToeGame(int boardSize) {
+    public TicTacToeGame(int boardSize, Scanner scanner) {
         this.board = new Board(boardSize);
+        this.scanner = scanner;
         board.printBoard();
         board.resetBoard();
     }
