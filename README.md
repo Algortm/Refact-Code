@@ -1,6 +1,6 @@
 # Tic Tac Toe Game
 
-This is the solution for the GoIT Academy Module 2.2 [Code Quality] homework. While working on this task, the educational project was analyzed with a focus on clean code principles. The SonarLint plugin was used to identify issues related to clean code standards, and the code was subsequently refactored.
+This is the solution for the GoIT Academy Module 2.2 [Code Quality] homework. While working on this task, the educational project (https://github.com/goitProjects/java-dev-homework-module-14-code-quality) was analyzed with a focus on clean code principles. The SonarLint plugin was used to identify issues related to clean code standards, and the code was subsequently refactored.
 
 ## Refactoring Description
 
@@ -51,6 +51,14 @@ This is the solution for the GoIT Academy Module 2.2 [Code Quality] homework. Wh
 #### **7. Consolidated Methods**
 
 - **Refactored Code:** Similar operations were consolidated into methods like `makeMove`, which delegates tasks to `makeUserMove` or `makeComputerMove` based on the player. This consolidation reduces code duplication and centralises similar operations, leading to a more maintainable codebase.
+
+#### **8. Scanner Resource Management**
+
+- **Refactored Code:** The `Scanner` instance used for user input was properly closed by utilizing a try-with-resources block in the `App` class. This ensures that the `Scanner` resource is automatically closed after its use, preventing potential resource leaks.
+
+#### **9. Exception Handling for Invalid Input**
+
+- **Refactored Code:** The `getUserMove` method in the `TicTacToeGame` class was refactored to handle exceptions related to invalid user input. Specifically, a `try-catch` block was added to catch `NumberFormatException` when the user enters non-numeric input. The user is prompted to enter a valid move until a correct input is provided.
 
 ## Project Description
 
