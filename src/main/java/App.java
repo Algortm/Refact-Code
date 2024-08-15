@@ -2,89 +2,107 @@ import java.util.Scanner;
 
 public class App {
 
+    private static final char PLAYER_MARK = 'X';
+    private static final char AI_MARK = 'O';
+    private static final int BOARD_SIZE = 9;
+    private static final char EMPTY = ' ';
+
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        byte input;
-        byte rand;
-        byte i;
-        boolean boxAvailable = false;
-        byte winner = 0;
-        char box[] = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+        char[] board = initializeBoard();
+        Scanner scanner = new Scanner(System.in);
+        boolean gameRunning = true;
+
         System.out.println("Enter box number to select. Enjoy!\n");
 
-        boolean boxEmpty = false;
-        while (true) {
-            System.out.println("\n\n " + box[0] + " | " + box[1] + " | " + box[2] + " ");
-            System.out.println("-----------");
-            System.out.println(" " + box[3] + " | " + box[4] + " | " + box[5] + " ");
-            System.out.println("-----------");
-            System.out.println(" " + box[6] + " | " + box[7] + " | " + box[8] + " \n");
-            if(!boxEmpty){
-                for(i = 0; i < 9; i++)
-                    box[i] = ' ';
-                boxEmpty = true;
-            }
+        while (gameRunning) {
+            printBoard(board);
+            playerMove(board, scanner);
 
-            if(winner == 1){
+            if (checkWin(board, PLAYER_MARK)) {
+                printBoard(board);
                 System.out.println("You won the game!\nCreated by Shreyas Saha. Thanks for playing!");
                 break;
-            } else if(winner == 2){
-                System.out.println("You lost the game!\nCreated by Shreyas Saha. Thanks for playing!");
-                break;
-            } else if(winner == 3){
+            }
+
+            if (isBoardFull(board)) {
+                printBoard(board);
                 System.out.println("It's a draw!\nCreated by Shreyas Saha. Thanks for playing!");
                 break;
             }
 
-            while (true) {
-                input = scan.nextByte();
-                if (input > 0 && input < 10) {
-                    if (box[input - 1] == 'X' || box[input - 1] == 'O')
-                        System.out.println("That one is already in use. Enter another.");
-                    else {
-                        box[input - 1] = 'X';
-                        break;
-                    }
-                }
-                else
-                    System.out.println("Invalid input. Enter again.");
-            }
+            aiMove(board);
 
-            if((box[0]=='X' && box[1]=='X' && box[2]=='X') || (box[3]=='X' && box[4]=='X' && box[5]=='X') || (box[6]=='X' && box[7]=='X' && box[8]=='X') ||
-               (box[0]=='X' && box[3]=='X' && box[6]=='X') || (box[1]=='X' && box[4]=='X' && box[7]=='X') || (box[2]=='X' && box[5]=='X' && box[8]=='X') ||
-               (box[0]=='X' && box[4]=='X' && box[8]=='X') || (box[2]=='X' && box[4]=='X' && box[6]=='X')){
-                   winner = 1;
-                   continue;
-            }
-
-            boxAvailable = false;
-            for(i=0; i<9; i++){
-                if(box[i] != 'X' && box[i] != 'O'){
-                    boxAvailable = true;
-                    break;
-                }
-            }
-
-            if(boxAvailable == false){
-                winner = 3;
-                continue;
-            }
-
-            while (true) {
-                rand = (byte) (Math.random() * (9 - 1 + 1) + 1);
-                if (box[rand - 1] != 'X' && box[rand - 1] != 'O') {
-                    box[rand - 1] = 'O';
-                    break;
-                }
-            }
-
-            if((box[0]=='O' && box[1]=='O' && box[2]=='O') || (box[3]=='O' && box[4]=='O' && box[5]=='O') || (box[6]=='O' && box[7]=='O' && box[8]=='O') ||
-               (box[0]=='O' && box[3]=='O' && box[6]=='O') || (box[1]=='O' && box[4]=='O' && box[7]=='O') || (box[2]=='O' && box[5]=='O' && box[8]=='O') ||
-               (box[0]=='O' && box[4]=='O' && box[8]=='O') || (box[2]=='O' && box[4]=='O' && box[6]=='O')){
-                winner = 2;
-                continue;
+            if (checkWin(board, AI_MARK)) {
+                printBoard(board);
+                System.out.println("You lost the game!\nCreated by Shreyas Saha. Thanks for playing!");
+                gameRunning = false;
+            } else if (isBoardFull(board)) {
+                printBoard(board);
+                System.out.println("It's a draw!\nCreated by Shreyas Saha. Thanks for playing!");
+                gameRunning = false;
             }
         }
 
+    }
+
+    private static char[] initializeBoard() {
+        char[] board = new char[BOARD_SIZE];
+        for (int i = 0; i < BOARD_SIZE; i++) {
+            board[i] = EMPTY;
+        }
+        return board;
+    }
+
+    private static void printBoard(char[] board) {
+        System.out.println("\n " + board[0] + " | " + board[1] + " | " + board[2] + " ");
+        System.out.println("-----------");
+        System.out.println(" " + board[3] + " | " + board[4] + " | " + board[5] + " ");
+        System.out.println("-----------");
+        System.out.println(" " + board[6] + " | " + board[7] + " | " + board[8] + " \n");
+    }
+
+    private static void playerMove(char[] board, Scanner scanner) {
+        int move;
+        while (true) {
+            System.out.print("Enter your move (1-9): ");
+            move = scanner.nextInt() - 1;
+            if (move >= 0 && move < BOARD_SIZE && board[move] == EMPTY) {
+                board[move] = PLAYER_MARK;
+                break;
+            } else {
+                System.out.println("Invalid input. Enter again.");
+            }
+        }
+    }
+
+    private static void aiMove(char[] board) {
+        int move;
+        while (true) {
+            move = (int) (Math.random() * BOARD_SIZE);
+            if (board[move] == EMPTY) {
+                board[move] = AI_MARK;
+                break;
+            }
+        }
+    }
+
+    private static boolean checkWin(char[] board, char mark) {
+        return (board[0] == mark && board[1] == mark && board[2] == mark) ||
+                (board[3] == mark && board[4] == mark && board[5] == mark) ||
+                (board[6] == mark && board[7] == mark && board[8] == mark) ||
+                (board[0] == mark && board[3] == mark && board[6] == mark) ||
+                (board[1] == mark && board[4] == mark && board[7] == mark) ||
+                (board[2] == mark && board[5] == mark && board[8] == mark) ||
+                (board[0] == mark && board[4] == mark && board[8] == mark) ||
+                (board[2] == mark && board[4] == mark && board[6] == mark);
+    }
+
+    private static boolean isBoardFull(char[] board) {
+        for (char c : board) {
+            if (c == EMPTY) {
+                return false;
+            }
+        }
+        return true;
     }
 }
