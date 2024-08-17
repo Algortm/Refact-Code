@@ -8,7 +8,7 @@ import java.util.Scanner;
 @RequiredArgsConstructor
 public final class HumanPlayer implements Player {
     private final Scanner scanner;
-    private final char marker = 'X';
+    private static final char MARKER = 'X';
 
     @Override
     public boolean makeMove(Board board) {
@@ -19,7 +19,7 @@ public final class HumanPlayer implements Player {
                 if (board.isCellInUse(input)) {
                     System.out.println("That one is already in use. Enter another.");
                 } else {
-                    board.makeMove(input, marker);
+                    board.makeMove(input, MARKER);
                     return true;
                 }
             } else {
@@ -30,7 +30,7 @@ public final class HumanPlayer implements Player {
 
     @Override
     public char getMarker() {
-        return marker;
+        return MARKER;
     }
 
     private static boolean isValidInput(byte input) {

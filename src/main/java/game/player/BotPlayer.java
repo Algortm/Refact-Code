@@ -8,7 +8,7 @@ import java.util.Random;
 @RequiredArgsConstructor
 public final class BotPlayer implements Player {
     private final Random random;
-    private final char marker = 'O';
+    private static final char MARKER = 'O';
 
     @Override
     public boolean makeMove(Board board) {
@@ -16,7 +16,7 @@ public final class BotPlayer implements Player {
         while (true) {
             rand = (byte) (random.nextInt(9) + 1);
             if (!board.isCellInUse(rand)) {
-                board.makeMove(rand, marker);
+                board.makeMove(rand, MARKER);
                 return true;
             }
         }
@@ -24,6 +24,6 @@ public final class BotPlayer implements Player {
 
     @Override
     public char getMarker() {
-        return marker;
+        return MARKER;
     }
 }

@@ -12,46 +12,37 @@ public final class TicTacToe {
     private final Player humanPlayer;
     private final Player botPlayer;
     private final Display display;
+    private Winner winner;
 
 
     public void startGame() {
         display.showMessage("Enter box number to select. Enjoy!\n");
         display.printInitialBoard(board.getBoard());
         Player currentPlayer = humanPlayer;
-        Winner winner;
 
         while (true) {
-            boolean validMove = currentPlayer.makeMove(board);
-            if (validMove) {
-                if (board.isWinningCombination(currentPlayer.getMarker())) {
-                    display.printBoard(board.getBoard());
-                    winner = currentPlayer instanceof HumanPlayer ? Winner.HUMAN : Winner.BOT;
-                    break;
-                }
-
-                if (board.isDraw()) {
-                    display.printBoard(board.getBoard());
-                    winner = Winner.DRAW;
-                    break;
-                }
-                currentPlayer = botPlayer;
+            if (processMove(currentPlayer)) {
+                break;
             }
-            validMove = currentPlayer.makeMove(board);
-            if (validMove) {
-                display.printBoard(board.getBoard());
-                if (board.isWinningCombination(currentPlayer.getMarker())) {
-                    winner = currentPlayer instanceof HumanPlayer ? Winner.HUMAN : Winner.BOT;
-                    break;
-                }
-                if (board.isDraw()) {
-                    winner = Winner.DRAW;
-                    break;
-                }
-
-                currentPlayer = humanPlayer;
-            }
+            currentPlayer = currentPlayer instanceof HumanPlayer ? botPlayer : humanPlayer;
         }
         display.showMessage(winner.fullMessage());
+
+
+    }
+
+    private boolean processMove(Player player) {
+        if (player.makeMove(board)) {
+            display.printBoard(board.getBoard());
+            if (board.isWinningCombination(player.getMarker())) {
+                winner = player instanceof HumanPlayer ? Winner.HUMAN : Winner.BOT;
+                return true;
+            }
+            if (board.isDraw()) {
+                winner = Winner.DRAW;
+                return true;
+            }
+        }
+        return false;
     }
 }
-
