@@ -5,7 +5,9 @@ import java.util.Scanner;
 public class TicTacToeGame {
 
     private static final String MESSAGE_FOOTER = "Created by Shreyas Saha. Thanks for playing!";
-    private static final Scanner scan = new Scanner(System.in);
+    private static final Scanner SCAN = new Scanner(System.in);
+    private static final char PLAYER_X_CHAR = 'X';
+    private static final char PLAYER_O_CHAR = 'O';
 
     public void startGame() {
 
@@ -20,27 +22,27 @@ public class TicTacToeGame {
             printGameBoard(box);
         } while (winner == 0);
         printGameResult(winner);
-        scan.close();
+        SCAN.close();
     }
 
     private byte resultOfStep(char[] box) {
         takeStepByX(box);
-        if (isWinnerFound(box, 'X')) {
+        if (isWinnerFound(box, PLAYER_X_CHAR)) {
             return 1;
         }
         if (!boxAvailable(box)) {
             return 3;
         }
         takeStepByO(box);
-        if (isWinnerFound(box, 'O')) {
+        if (isWinnerFound(box, PLAYER_O_CHAR)) {
             return 2;
         }
         return 0;
     }
 
     private boolean boxAvailable(char[] box) {
-        for (byte i = 0; i < 9; i++) {
-            if (box[i] != 'X' && box[i] != 'O') {
+        for (byte i = 0; i < box.length; i++) {
+            if (box[i] != PLAYER_X_CHAR && box[i] != PLAYER_O_CHAR) {
                 return true;
             }
         }
@@ -56,9 +58,9 @@ public class TicTacToeGame {
     private void takeStepByO(char[] box) {
         byte rand;
         while (true) {
-            rand = (byte) (Math.random() * (9 - 1 + 1) + 1);
-            if (box[rand - 1] != 'X' && box[rand - 1] != 'O') {
-                box[rand - 1] = 'O';
+            rand = (byte) (Math.random() * (box.length) + 1);
+            if (box[rand - 1] != PLAYER_X_CHAR && box[rand - 1] != PLAYER_O_CHAR) {
+                box[rand - 1] = PLAYER_O_CHAR;
                 break;
             }
         }
@@ -67,12 +69,12 @@ public class TicTacToeGame {
     private void takeStepByX(char[] box) {
         byte input;
         while (true) {
-            input = scan.nextByte();
-            if (input > 0 && input < 10) {
-                if (box[input - 1] == 'X' || box[input - 1] == 'O')
+            input = SCAN.nextByte();
+            if (input > 0 && input <= box.length) {
+                if (box[input - 1] == PLAYER_X_CHAR || box[input - 1] == PLAYER_O_CHAR)
                     System.out.println("That one is already in use. Enter another.");
                 else {
-                    box[input - 1] = 'X';
+                    box[input - 1] = PLAYER_X_CHAR;
                     break;
                 }
             } else
@@ -91,7 +93,7 @@ public class TicTacToeGame {
     }
 
     private void clearBoard(char[] box) {
-        for (byte i = 0; i < 9; i++) {
+        for (byte i = 0; i < box.length; i++) {
             box[i] = ' ';
         }
     }
