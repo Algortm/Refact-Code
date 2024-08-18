@@ -75,7 +75,7 @@ public class TikTakToe {
         return true;
     }
 
-    private static void computerMove(char[] board) {
+    private void computerMove(char[] board) {
         while (true) {
             int randomMove = (int) (Math.random() * BOARD_SIZE);
             if (board[randomMove] == ' ') {
@@ -85,7 +85,7 @@ public class TikTakToe {
         }
     }
 
-    private static int checkWinner(char[] board, char playerMark, char computerMark) {
+    private int checkWinner(char[] board, char playerMark, char computerMark) {
         int[][] winPositions = {
                 {0, 1, 2}, {3, 4, 5}, {6, 7, 8},
                 {0, 3, 6}, {1, 4, 7}, {2, 5, 8},
@@ -104,7 +104,7 @@ public class TikTakToe {
         return 0;
     }
 
-    private static void printGameResult(int winner) {
+    private void printGameResult(int winner) {
         switch (winner) {
             case 1:
                 System.out.println("You won the game!");
