@@ -20,6 +20,7 @@ public class TicTacToeGame {
             printGameBoard(box);
         } while (winner == 0);
         printGameResult(winner);
+        scan.close();
     }
 
     private byte resultOfStep(char[] box) {
