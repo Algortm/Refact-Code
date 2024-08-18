@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class TicTacToeGame {
 
     private static final String MESSAGE_FOOTER = "Created by Shreyas Saha. Thanks for playing!";
+    private static final Scanner scan = new Scanner(System.in);
 
     public void startGame() {
 
@@ -26,7 +27,6 @@ public class TicTacToeGame {
         if (isWinnerFound(box, 'X')) {
             return 1;
         }
-
         if (!boxAvailable(box)) {
             return 3;
         }
@@ -38,8 +38,7 @@ public class TicTacToeGame {
     }
 
     private boolean boxAvailable(char[] box) {
-        byte i;
-        for (i = 0; i < 9; i++) {
+        for (byte i = 0; i < 9; i++) {
             if (box[i] != 'X' && box[i] != 'O') {
                 return true;
             }
@@ -65,7 +64,6 @@ public class TicTacToeGame {
     }
 
     private void takeStepByX(char[] box) {
-        Scanner scan = new Scanner(System.in);
         byte input;
         while (true) {
             input = scan.nextByte();
@@ -86,15 +84,15 @@ public class TicTacToeGame {
             case 1 -> "You won the game!\n";
             case 2 -> "You lost the game!\n";
             case 3 -> "It's a draw!\n";
-            default -> "Unknown result";
+            default -> "Unknown result\n";
         };
         System.out.println(result + MESSAGE_FOOTER);
     }
 
     private void clearBoard(char[] box) {
-        byte i;
-        for (i = 0; i < 9; i++)
+        for (byte i = 0; i < 9; i++) {
             box[i] = ' ';
+        }
     }
 
     private void printGameBoard(char[] box) {
