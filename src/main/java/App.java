@@ -1,21 +1,25 @@
 import java.util.Scanner;
 
 public class App {
+    private char[] gameBoard = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+    private boolean isGameRunning = true;
+    private boolean isBoardEmpty = false;
+    private int winner = 0;
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        char[] gameBoard = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-        boolean isGameRunning = true;
-        boolean isBoardEmpty = false;
-        int winner = 0;
+        App app = new App();
+        app.startGame();
+    }
 
+    public void startGame() {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter box number to select. Enjoy!\n");
 
         while (isGameRunning) {
-            printBoard(gameBoard);
+            printBoard();
 
             if (!isBoardEmpty) {
-                clearBoard(gameBoard);
+                clearBoard();
                 isBoardEmpty = true;
             }
 
@@ -25,55 +29,57 @@ public class App {
             }
 
             // Хід гравця
-            playerMove(scanner, gameBoard);
+            playerMove(scanner);
 
             // Перевірка перемоги гравця
-            if (checkWinner(gameBoard, 'X')) {
+            if (checkWinner('X')) {
                 winner = 1;
                 continue;
             }
 
             // Перевірка на нічию
-            if (!isBoardAvailable(gameBoard)) {
+            if (!isBoardAvailable()) {
                 winner = 3;
                 continue;
             }
 
             // Хід комп'ютера
-            makeComputerMove(gameBoard);
+            makeComputerMove();
 
             // Перевірка перемоги комп'ютера
-            if (checkWinner(gameBoard, 'O')) {
+            if (checkWinner('O')) {
                 winner = 2;
             }
         }
+
+        scanner.close();
     }
 
     // Виведення ігрової дошки
-    private static void printBoard(char[] board) {
-        System.out.println("\n\n " + board[0] + " | " + board[1] + " | " + board[2] + " ");
+    private void printBoard() {
+        System.out.println("\n\n " + gameBoard[0] + " | " + gameBoard[1] + " | " + gameBoard[2] + " ");
         System.out.println("-----------");
-        System.out.println(" " + board[3] + " | " + board[4] + " | " + board[5] + " ");
+        System.out.println(" " + gameBoard[3] + " | " + gameBoard[4] + " | " + gameBoard[5] + " ");
         System.out.println("-----------");
-        System.out.println(" " + board[6] + " | " + board[7] + " | " + board[8] + " \n");
+        System.out.println(" " + gameBoard[6] + " | " + gameBoard[7] + " | " + gameBoard[8] + " \n");
     }
 
     // Очищення дошки
-    private static void clearBoard(char[] board) {
+    private void clearBoard() {
         for (int i = 0; i < 9; i++) {
-            board[i] = ' ';
+            gameBoard[i] = ' ';
         }
     }
 
     // Хід гравця
-    private static void playerMove(Scanner scanner, char[] board) {
+    private void playerMove(Scanner scanner) {
         while (true) {
             byte input = scanner.nextByte();
             if (input > 0 && input < 10) {
-                if (board[input - 1] == 'X' || board[input - 1] == 'O') {
+                if (gameBoard[input - 1] == 'X' || gameBoard[input - 1] == 'O') {
                     System.out.println("That one is already in use. Enter another.");
                 } else {
-                    board[input - 1] = 'X';
+                    gameBoard[input - 1] = 'X';
                     break;
                 }
             } else {
@@ -83,20 +89,20 @@ public class App {
     }
 
     // Перевірка переможця
-    private static boolean checkWinner(char[] board, char player) {
-        return (board[0] == player && board[1] == player && board[2] == player) ||
-                (board[3] == player && board[4] == player && board[5] == player) ||
-                (board[6] == player && board[7] == player && board[8] == player) ||
-                (board[0] == player && board[3] == player && board[6] == player) ||
-                (board[1] == player && board[4] == player && board[7] == player) ||
-                (board[2] == player && board[5] == player && board[8] == player) ||
-                (board[0] == player && board[4] == player && board[8] == player) ||
-                (board[2] == player && board[4] == player && board[6] == player);
+    private boolean checkWinner(char player) {
+        return (gameBoard[0] == player && gameBoard[1] == player && gameBoard[2] == player) ||
+                (gameBoard[3] == player && gameBoard[4] == player && gameBoard[5] == player) ||
+                (gameBoard[6] == player && gameBoard[7] == player && gameBoard[8] == player) ||
+                (gameBoard[0] == player && gameBoard[3] == player && gameBoard[6] == player) ||
+                (gameBoard[1] == player && gameBoard[4] == player && gameBoard[7] == player) ||
+                (gameBoard[2] == player && gameBoard[5] == player && gameBoard[8] == player) ||
+                (gameBoard[0] == player && gameBoard[4] == player && gameBoard[8] == player) ||
+                (gameBoard[2] == player && gameBoard[4] == player && gameBoard[6] == player);
     }
 
     // Перевірка наявності вільних місць
-    private static boolean isBoardAvailable(char[] board) {
-        for (char cell : board) {
+    private boolean isBoardAvailable() {
+        for (char cell : gameBoard) {
             if (cell != 'X' && cell != 'O') {
                 return true;
             }
@@ -105,18 +111,18 @@ public class App {
     }
 
     // Хід комп'ютера
-    private static void makeComputerMove(char[] board) {
+    private void makeComputerMove() {
         while (true) {
             int rand = (int) (Math.random() * 9);
-            if (board[rand] != 'X' && board[rand] != 'O') {
-                board[rand] = 'O';
+            if (gameBoard[rand] != 'X' && gameBoard[rand] != 'O') {
+                gameBoard[rand] = 'O';
                 break;
             }
         }
     }
 
     // Виведення переможця
-    private static void displayWinner(int winner) {
+    private void displayWinner(int winner) {
         switch (winner) {
             case 1:
                 System.out.println("You won the game! Thanks for playing!");
@@ -130,3 +136,4 @@ public class App {
         }
     }
 }
+
