@@ -7,17 +7,22 @@ public class GameDemo {
     private boolean boxEmpty = false;
 
     public void startGame() {
+        BoardOfGame board = new BoardOfGame();
+        CheckWinner win = new CheckWinner();
+        InputNumbers inputNumber = new InputNumbers();
+        SetWinner statusWinner = new SetWinner();
+        Computer computer = new Computer();
         System.out.println("Enter box number to select. Enjoy!\n");
         while(true) {
-            BoardOfGame.printBoard(box);
-            boxEmpty = BoardOfGame.cleanBoard(box, boxEmpty);
+            board.printBoard(box);
+            boxEmpty = board.cleanBoard(box, boxEmpty);
             if(winner == 1 || winner == 2 || winner == 3) {
-                CheckWinner.checkWin(winner);
+                win.checkWin(winner);
                 break;
             }
-            InputNumbers.input(scan, box);
-            winner = SetWinner.setWinner(box, winner);
-            Computer.computerProgress(box);
+            inputNumber.input(scan, box);
+            winner = statusWinner.setWinner(box, winner);
+            computer.computerProgress(box);
         }
     }
 }

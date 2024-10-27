@@ -1,8 +1,6 @@
 import java.util.Scanner;
 class InputNumbers {
-    private InputNumbers() {
-    }
-    public static void input(Scanner scan, char[] box) {
+    public void input(Scanner scan, char[] box) {
         byte input;
         while (true) {
             input = scan.nextByte();

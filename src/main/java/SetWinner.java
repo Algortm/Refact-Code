@@ -1,7 +1,5 @@
 public class SetWinner {
-    private SetWinner() {
-    }
-    public static byte setWinner(char[] box, byte winner) {
+    public byte setWinner(char[] box, byte winner) {
         boolean boxAvailable = false;
         for (byte i = 0; i < 9; i++) {
             if (box[i] != 'X' && box[i] != 'O') {
@@ -19,7 +17,7 @@ public class SetWinner {
         return winner;
     }
 
-    private static boolean createDependenceOfWin(char[] box,char symbol){
+    private boolean createDependenceOfWin(char[] box,char symbol){
         return ((box[0] == symbol && box[1] == symbol && box[2] == symbol) ||
                 (box[3] == symbol && box[4] == symbol && box[5] == symbol) ||
                 (box[6] == symbol && box[7] == symbol && box[8] == symbol) ||
